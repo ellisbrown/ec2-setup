@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# For g2 instance:
-wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.106/NVIDIA-Linux-x86_64-367.106.run
+# For g4dn instance:
+wget https://us.download.nvidia.com/tesla/460.73.01/NVIDIA-Linux-x86_64-460.73.01.run
 sudo service lightdm stop
 sudo /bin/bash NVIDIA-*.run --no-questions --run-nvidia-xconfig
 rm -f *.run
