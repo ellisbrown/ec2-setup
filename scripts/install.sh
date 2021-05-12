@@ -10,13 +10,19 @@ sudo apt-get install -y lubuntu-desktop
 # xterm is needed for xinit
 sudo apt-get install -y xterm
 
+export SYS_ARCH=amd64  # amd64
+
 # Install VirtualGL
-wget https://sourceforge.net/projects/virtualgl/files/2.5.2/virtualgl_2.5.2_amd64.deb/download -O virtualgl_2.5.2_amd64.deb && \
+sudo apt-get install libglu1-mesa  # required for virtualgl
+
+export VGL_VERSION=2.6.5  #2.5.2
+wget https://sourceforge.net/projects/virtualgl/files/$VGL_VERSION/virtualgl_${VGL_VERSION}_$SYS_ARCH.deb/download -O virtualgl_${VGL_VERSION}_$SYS_ARCH.deb && \
 sudo dpkg -i virtualgl*.deb && \
 rm virtualgl*.deb
 
 # Install TurboVNC
-wget https://sourceforge.net/projects/turbovnc/files/2.1.1/turbovnc_2.1.1_amd64.deb/download -O turbovnc_2.1.1_amd64.deb && \
+export TVNC_VERSION=2.2.6  # 2.1.1
+wget https://sourceforge.net/projects/turbovnc/files/$TVNC_VERSION/turbovnc_${TVNC_VERSION}_$SYS_ARCH.deb/download -O turbovnc_${TVNC_VERSION}_$SYS_ARCH.deb && \
 sudo dpkg -i turbovnc*.deb && \
 rm turbovnc*.deb
 
@@ -35,7 +41,7 @@ sudo apt-get upgrade -y linux-aws
 
 # Cleanup
 sudo apt-get clean && \
-sudo apt-get autoremove && \
+sudo apt-get autoremove -y && \
 sudo rm -r /var/lib/apt/lists/*
 
 # Add aliases
