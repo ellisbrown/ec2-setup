@@ -219,8 +219,8 @@ RUN printf "%s\n" \
            "else" \
            "  # \$LAUNCH_NOVNC variable is NOT set. Launch TurboVNC only" \
            "  /opt/TurboVNC/bin/vncserver" \
-           "fi" | sudo tee ${startup} > /dev/null  \
-           "xfce4-session --display=:1 &" \
+           "fi" \
+           "xfce4-session --display=:1 &" | sudo tee ${startup} > /dev/null  \
     && \
     sudo chmod a+x ${startup}
 
