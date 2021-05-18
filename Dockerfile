@@ -97,7 +97,7 @@ RUN git clone https://github.com/novnc/noVNC /opt/noVNC && \
 #    dpkg -i nomachine.deb && \
 #    rm nomachine.deb
 
-RUN apt install xfce4-panel xfce4-session -y
+RUN sudo apt update && sudo apt install -y xfce4-panel xfce4-session
 
 
 # Clean
