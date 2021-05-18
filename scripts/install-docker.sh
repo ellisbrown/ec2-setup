@@ -15,9 +15,14 @@ sudo apt-get install -y docker-ce
 sudo usermod -a -G docker ubuntu
 
 # Install nvidia-docker
-wget https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb && \
-sudo dpkg -i nvidia-docker*.deb && \
-rm -f nvidia-docker*.deb
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+
+sudo systemctl restart docker
 
 # Cleanup
 sudo apt-get clean && \

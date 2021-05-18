@@ -39,6 +39,21 @@ sudo /opt/VirtualGL/bin/vglserver_config -config +s +f -t
 sudo apt-get install -y gcc linux-headers-$(uname -r)
 sudo apt-get upgrade -y linux-aws
 
+# Add nouveau to the /etc/modprobe.d/blacklist.conf blacklist file
+cat << EOF | sudo tee --append /etc/modprobe.d/blacklist.conf
+blacklist vga16fb
+blacklist nouveau
+blacklist rivafb
+blacklist nvidiafb
+blacklist rivatv
+EOF
+
+cat << EOF | sudo tee --append /etc/default/grub
+GRUB_CMDLINE_LINUX="rdblacklist=nouveau"
+EOF
+
+sudo update-grub
+
 # Cleanup
 sudo apt-get clean && \
 sudo apt-get autoremove -y && \

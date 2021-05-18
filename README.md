@@ -27,7 +27,7 @@ The machine will reboot at the end of the process. You'll have to wait a bit and
 
 Then, for a G2 instance:
 
-`$ source install-nvidia-drivers-g2.sh`
+`$ source install-nvidia-drivers-g4.sh`
 
 An interactive installer will run, during which you'll have to accept the license and ignore the warnings.
 The machine will again reboot at the end of the process.
